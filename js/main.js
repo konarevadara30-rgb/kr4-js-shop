@@ -1,3 +1,4 @@
+// js/main.js
 document.addEventListener('DOMContentLoaded', () => {
   // --- Скролл и кнопка наверх ---
   function lockScroll() {
@@ -23,19 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Бургер-меню (закрытие при клике на ссылку) ---
+  // --- Бургер-меню ---
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.querySelectorAll('.site-nav__link');
   
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (navToggle && navToggle.checked) {
-        navToggle.checked = false; // Снимаем галочку, меню закрывается
+        navToggle.checked = false;
       }
     });
   });
 
-  // --- Модальное окно ---
+  // --- Модальное окно (для главной страницы) ---
   const dialog = document.getElementById('order-dialog');
   const selectedProductInput = document.getElementById('selected-product');
   const closeDialogButton = document.getElementById('close-order-dialog');
@@ -64,33 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = dialog.getBoundingClientRect();
       const isInside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
       if (!isInside) closeDialog();
-    });
-  }
-
-  // --- Валидация формы ---
-  const orderForm = document.getElementById('order-form');
-  const successMessage = document.getElementById('success-message');
-
-  if (orderForm) {
-    orderForm.querySelectorAll('input, select, textarea').forEach((field) => {
-      field.addEventListener('invalid', () => field.setAttribute('aria-invalid', 'true'));
-      field.addEventListener('input', () => {
-        if (field.checkValidity()) field.removeAttribute('aria-invalid');
-      });
-    });
-
-    orderForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      if (!orderForm.checkValidity()) {
-        orderForm.reportValidity();
-        return;
-      }
-      if (successMessage) {
-        successMessage.hidden = false;
-        setTimeout(() => successMessage.hidden = true, 5000);
-      }
-      if (dialog && dialog.open) closeDialog();
-      orderForm.reset();
     });
   }
 });

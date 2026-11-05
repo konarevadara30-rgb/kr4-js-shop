@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Оформление заявки на книгу в интернет-магазине «Переплёт».">
   <title>Оформление заявки — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Подключаем скрипты (ПР №15–17) -->
+  <script src="js/validation.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -31,10 +35,16 @@
   </header>
 
   <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Оформление заявки</span>
+    </nav>
+
     <section class="section">
       <h1>Оформление заявки</h1>
       <p>Заполните форму ниже, чтобы оставить заявку на книгу или задать вопрос.</p>
 
+      <!-- Добавлен ID order-form и novalidate (отключает встроенную браузерную валидацию) -->
       <form class="order-form" id="order-form" action="#" method="post" novalidate>
         <input id="selected-product" name="selected-product" type="hidden">
 
@@ -50,7 +60,7 @@
 
         <div class="order-form__field">
           <label class="order-form__label" for="order-phone">Телефон <span aria-hidden="true">*</span></label>
-          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" required>
         </div>
 
         <div class="order-form__field">
@@ -77,7 +87,8 @@
         </div>
       </form>
 
-      <p class="success-message" id="success-message" hidden role="alert">
+      <!-- Блок для вывода сообщений об успехе или ошибке (по ПР №17) -->
+      <p class="success-message" id="success-message" hidden role="alert" style="margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;">
         Заявка успешно отправлена! Мы свяжемся с вами.
       </p>
     </section>

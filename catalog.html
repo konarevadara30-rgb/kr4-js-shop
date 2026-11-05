@@ -7,6 +7,10 @@
   <title>Каталог книг — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Подключаем скрипты (ПР №15–17) -->
+  <script src="js/data.js" defer></script>
+  <script src="js/catalog.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -45,81 +49,42 @@
     <section class="catalog-layout">
       <aside class="catalog-filters">
         <h2>Фильтры</h2>
-        <form class="filters-form" action="#" method="get">
+        <div class="filters-form">
           <fieldset>
-            <legend>Категория</legend>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="all"> Все книги</label>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="popular"> Популярные</label>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="new"> Новинки</label>
+            <legend>Поиск и категории</legend>
+            <div class="filters-form__label">
+              <label for="catalog-search">Поиск по названию</label>
+              <input id="catalog-search" class="filters-form__input" type="search" placeholder="Введите название..." autocomplete="off">
+            </div>
+            
+            <div class="filters-form__label" style="margin-top: 12px;">
+              <label for="category-filter">Категория</label>
+              <select id="category-filter" class="filters-form__input">
+                <option value="all">Все книги</option>
+                <option value="classic">Классика</option>
+                <option value="prose">Проза</option>
+                <option value="foreign">Зарубежная</option>
+              </select>
+            </div>
+
+            <div class="filters-form__label" style="margin-top: 12px;">
+              <label for="sort-select">Сортировка</label>
+              <select id="sort-select" class="filters-form__input">
+                <option value="asc">Сначала дешевле</option>
+                <option value="desc">Сначала дороже</option>
+              </select>
+            </div>
           </fieldset>
-          <fieldset>
-            <legend>Цена</legend>
-            <label class="filters-form__label" for="price-from">От</label>
-            <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
-            <label class="filters-form__label" for="price-to">До</label>
-            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
-          </fieldset>
-          <button class="button button--primary" type="submit">Применить</button>
-        </form>
+        </div>
       </aside>
 
       <section class="catalog-products">
         <h2>Список книг</h2>
-        <div class="products-grid">
-          <article class="product-card product-card--featured">
-            <span class="product-card__badge">Хит</span>
-            <img class="product-card__image"
-                 src="images/im_1.jpg"
-                 alt="Обложка книги «Мы»"
-                 width="400" height="300" loading="lazy">
-            <h3 class="product-card__title">Замятин, Мы</h3>
-            <p class="product-card__description">Роман-антиутопия о тоталитарном будущем.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <img class="product-card__image" src="images/im_2.jpg" alt="Обложка пьесы «На дне»" width="400" height="300">
-            <h3 class="product-card__title">Горький, На дне</h3>
-            <p class="product-card__description">Пьеса о людях, оказавшихся на дне жизни.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <img class="product-card__image" src="images/im_3.jpg" alt="Обложка романа «Анна Каренина»" width="400" height="300">
-            <h3 class="product-card__title">Толстой, Анна Каренина</h3>
-            <p class="product-card__description">Великий роман о любви и трагической судьбе.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <img class="product-card__image" src="images/im_4.jpg" alt="Обложка книги «Царь-рыба»" width="400" height="300">
-            <h3 class="product-card__title">Астафьев, Царь-рыба</h3>
-            <p class="product-card__description">Повествование о Сибири, человеке и природе.</p>
-            <p class="product-card__price">Цена: 1200 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge">Новинка</span>
-            <img class="product-card__image" src="images/im_5.jpg" alt="Обложка романа «Отверженные»" width="400" height="300">
-            <h3 class="product-card__title">Гюго, Отверженные</h3>
-            <p class="product-card__description">Роман о справедливости и милосердии.</p>
-            <p class="product-card__price">Цена: 1800 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <img class="product-card__image" src="images/im_6.jpg" alt="Обложка книги «Повесть о жизни»" width="400" height="300">
-            <h3 class="product-card__title">Паустовский, Повесть о жизни</h3>
-            <p class="product-card__description">Автобиографическая повесть о становлении писателя.</p>
-            <p class="product-card__price">Цена: 2200 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-          </article>
-        </div>
+        <p class="catalog-count" aria-live="polite" style="font-weight: bold; color: var(--color-primary); margin-bottom: 16px;"></p>
+        <p class="catalog-empty" hidden style="color: var(--color-muted); padding: 20px; border: 1px dashed var(--color-border); border-radius: 8px; text-align: center;">По выбранным условиям книги не найдены.</p>
+        
+        <!-- СЮДА JS ВЫВОДИТ КАРТОЧКИ -->
+        <div class="products-grid" data-products-container></div>
       </section>
     </section>
   </main>
