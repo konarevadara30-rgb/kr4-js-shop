@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Замятин, Мы — Переплёт</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">Переплёт</a>
+      
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="product.html" aria-current="page">Карточка книги</a></li>
+          <li><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current">Замятин, Мы</span>
+    </nav>
+
+    <section class="section">
+      <article class="product-detail">
+        <h1>Замятин, Мы</h1>
+        <!-- Обновлено: im_1.jpg -->
+        <img class="product-card__image" src="images/im_1.jpg" alt="Обложка книги «Мы» Евгения Замятина" width="400" height="300" style="max-width: 400px; margin-bottom: 20px;">
+        <p>«Мы» — роман-антиутопия Евгения Замятина, написанный в 1920 году. Действие происходит в Едином Государстве будущего.</p>
+        <p class="product-card__price">Цена: 1000 руб.</p>
+
+        <div class="table-wrapper">
+          <!-- Добавлен класс product-table--specs для карточного вида -->
+          <table class="product-table product-table--specs">
+            <caption>Характеристики книги</caption>
+            <thead>
+              <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+            </thead>
+            <tbody>
+              <!-- В th добавлен scope="row", в td - data-label -->
+              <tr>
+                <th scope="row">Автор</th>
+                <td data-label="Автор">Евгений Замятин</td>
+              </tr>
+              <tr>
+                <th scope="row">Категория</th>
+                <td data-label="Категория">Роман-антиутопия</td>
+              </tr>
+              <tr>
+                <th scope="row">Издательство</th>
+                <td data-label="Издательство">Переплёт-Классика</td>
+              </tr>
+              <tr>
+                <th scope="row">Год издания</th>
+                <td data-label="Год издания">2024</td>
+              </tr>
+              <tr>
+                <th scope="row">Переплёт</th>
+                <td data-label="Переплёт">Твёрдый</td>
+              </tr>
+              <tr>
+                <th scope="row">Страниц</th>
+                <td data-label="Страниц">320</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="product-detail__actions" style="margin-top: 24px;">
+          <a class="button button--primary" href="order.html">Оформить заявку</a>
+          <a class="button button--secondary" href="catalog.html">Вернуться в каталог</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+</body>
+</html>

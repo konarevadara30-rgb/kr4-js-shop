@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — Переплёт</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">Переплёт</a>
+      
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html">Карточка книги</a></li>
+          <li><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Контакты</span>
+    </nav>
+
+    <section class="section">
+      <h1>Контакты</h1>
+      <p>Свяжитесь с нами — поможем выбрать книгу и ответим на вопросы о заказе.</p>
+      <ul>
+        <li>Телефон: +7 (900) 000-00-00</li>
+        <li>E-mail: info@pereplyot.example</li>
+        <li>Адрес: г. Москва, ул. Книжная, д. 1</li>
+        <li>Часы работы: ежедневно с 10:00 до 21:00</li>
+      </ul>
+    </section>
+
+    <section class="section" id="feedback">
+      <h2>Обратная связь</h2>
+      <p>Для отправки заявки на книгу используйте форму на странице «Заявка».</p>
+      <a class="button button--primary" href="order.html">Перейти к форме</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+</body>
+</html>

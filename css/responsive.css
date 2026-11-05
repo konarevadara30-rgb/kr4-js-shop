@@ -1,0 +1,129 @@
+/* ===================================
+   Адаптивные стили (Mobile First)
+   =================================== */
+
+/* Планшеты (от 640px) */
+@media (min-width: 640px) {
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .order-form__actions { flex-direction: row; }
+}
+
+/* Планшеты / Ноутбуки (от 768px) */
+@media (min-width: 768px) {
+  /* Возвращаем обычную шапку и скрываем бургер, sticky - фиксирует объект на одном месте */
+  .site-header { position: sticky; top: 0; z-index: 100; }
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+  }
+  .nav-toggle-label { display: none; }
+
+  /* Возвращаем меню в строку */
+  .site-nav { display: block !important; width: auto; margin-top: 0; }
+  .site-nav__list { flex-direction: row; flex-wrap: wrap; gap: var(--space-sm); }
+  .site-nav__link { padding: 8px 16px; }
+
+  .hero { padding: var(--space-xl); }
+
+  /* На планшетах/десктопе сетка hero сама разносит текст и картинку,
+     поэтому верхний отступ у картинки больше не нужен */
+  .hero__image-wrapper { margin-top: 0; }
+
+  /* На десктопе возвращаем карточкам левое выравнивание */
+  .product-card { text-align: left; }
+
+  .order-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .order-form__field--wide { grid-column: 1 / -1; }
+
+  /* На широких экранах кнопки в группе не растягиваются на всю ширину,
+     а прижимаются друг к другу с сохранением gap */
+  .product-actions { justify-content: flex-start; }
+  .product-actions .button { flex: 0 1 auto; min-width: 200px; }
+}
+
+/* Десктоп (от 900px) */
+@media (min-width: 900px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+}
+
+/* Десктоп / Каталог (от 1024px) */
+@media (min-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .catalog-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+  }
+  .catalog-filters { position: sticky; top: 88px; }
+}
+
+/* Широкие экраны (от 1280px) */
+@media (min-width: 1280px) {
+  .products-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+
+/* ===================================
+   КАРТОЧНОЕ ПРЕДСТАВЛЕНИЕ ТАБЛИЦЫ (Мобильные)
+   =================================== */
+@media (max-width: 767px) {
+  .table-wrapper:has(.product-table--specs) {
+    overflow-x: visible;
+  }
+
+  .product-table--specs {
+    min-width: 100%;
+    display: block;
+  }
+
+  .product-table--specs thead {
+    display: none;
+  }
+
+  .product-table--specs,
+  .product-table--specs tbody,
+  .product-table--specs tr,
+  .product-table--specs td {
+    display: block;
+    width: 100%;
+  }
+
+  .product-table--specs tr {
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-white);
+    padding: var(--space-sm);
+  }
+
+  .product-table--specs th[scope="row"] {
+    display: none;
+  }
+
+  .product-table--specs td {
+    border: none;
+    border-bottom: 1px solid var(--color-surface);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-xs);
+    text-align: right;
+  }
+
+  .product-table--specs td:last-child {
+    border-bottom: none;
+  }
+
+  .product-table--specs td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: left;
+    padding-right: var(--space-md);
+  }
+}

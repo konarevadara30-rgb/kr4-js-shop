@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформление заявки — Переплёт</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">Переплёт</a>
+      
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html">Карточка книги</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <h1>Оформление заявки</h1>
+      <p>Заполните форму ниже, чтобы оставить заявку на книгу или задать вопрос.</p>
+
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-name">Имя <span aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail <span aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон <span aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки</label>
+          <select class="order-form__select" id="order-topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="book">Заказ книги</option>
+            <option value="consultation">Консультация по выбору</option>
+          </select>
+        </div>
+
+        <div class="order-form__field order-form__field--wide">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите книгу и дополнительную информацию"></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--wide" style="grid-template-columns: auto 1fr; align-items: center;">
+          <input class="order-form__input order-form__input--checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+          <label class="order-form__label" for="order-agreement" style="margin-bottom: 0;">Я согласен на обработку данных</label>
+        </div>
+
+        <div class="order-form__actions order-form__field--wide">
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="success-message" hidden role="alert">
+        Заявка успешно отправлена! Мы свяжемся с вами.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+</body>
+</html>

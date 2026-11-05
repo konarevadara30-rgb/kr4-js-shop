@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог книг интернет-магазина «Переплёт».">
+  <title>Каталог книг — Переплёт</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">Переплёт</a>
+      
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html">Карточка книги</a></li>
+          <li><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Каталог</span>
+    </nav>
+
+    <section class="section">
+      <h1>Каталог книг</h1>
+      <p>Классика, антиутопия и проза — выберите книгу по душе.</p>
+    </section>
+
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2>Фильтры</h2>
+        <form class="filters-form" action="#" method="get">
+          <fieldset>
+            <legend>Категория</legend>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="all"> Все книги</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="popular"> Популярные</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="new"> Новинки</label>
+          </fieldset>
+          <fieldset>
+            <legend>Цена</legend>
+            <label class="filters-form__label" for="price-from">От</label>
+            <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <label class="filters-form__label" for="price-to">До</label>
+            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+          </fieldset>
+          <button class="button button--primary" type="submit">Применить</button>
+        </form>
+      </aside>
+
+      <section class="catalog-products">
+        <h2>Список книг</h2>
+        <div class="products-grid">
+          <article class="product-card product-card--featured">
+            <span class="product-card__badge">Хит</span>
+            <img class="product-card__image"
+                 src="images/im_1.jpg"
+                 alt="Обложка книги «Мы»"
+                 width="400" height="300" loading="lazy">
+            <h3 class="product-card__title">Замятин, Мы</h3>
+            <p class="product-card__description">Роман-антиутопия о тоталитарном будущем.</p>
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <img class="product-card__image" src="images/im_2.jpg" alt="Обложка пьесы «На дне»" width="400" height="300">
+            <h3 class="product-card__title">Горький, На дне</h3>
+            <p class="product-card__description">Пьеса о людях, оказавшихся на дне жизни.</p>
+            <p class="product-card__price">Цена: 1500 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <img class="product-card__image" src="images/im_3.jpg" alt="Обложка романа «Анна Каренина»" width="400" height="300">
+            <h3 class="product-card__title">Толстой, Анна Каренина</h3>
+            <p class="product-card__description">Великий роман о любви и трагической судьбе.</p>
+            <p class="product-card__price">Цена: 2000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge">Скидка</span>
+            <img class="product-card__image" src="images/im_4.jpg" alt="Обложка книги «Царь-рыба»" width="400" height="300">
+            <h3 class="product-card__title">Астафьев, Царь-рыба</h3>
+            <p class="product-card__description">Повествование о Сибири, человеке и природе.</p>
+            <p class="product-card__price">Цена: 1200 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--new">
+            <span class="product-card__badge">Новинка</span>
+            <img class="product-card__image" src="images/im_5.jpg" alt="Обложка романа «Отверженные»" width="400" height="300">
+            <h3 class="product-card__title">Гюго, Отверженные</h3>
+            <p class="product-card__description">Роман о справедливости и милосердии.</p>
+            <p class="product-card__price">Цена: 1800 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <img class="product-card__image" src="images/im_6.jpg" alt="Обложка книги «Повесть о жизни»" width="400" height="300">
+            <h3 class="product-card__title">Паустовский, Повесть о жизни</h3>
+            <p class="product-card__description">Автобиографическая повесть о становлении писателя.</p>
+            <p class="product-card__price">Цена: 2200 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+</body>
+</html>
