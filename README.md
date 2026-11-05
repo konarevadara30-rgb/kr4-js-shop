@@ -45,7 +45,9 @@ kr4-js-shop/
 ├── images/
 ├── README.md
 └── .gitignore
-```text
+```
+
+
 
 ## Этап 16. Коммит изменений
 
