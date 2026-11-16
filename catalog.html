@@ -7,38 +7,41 @@
   <title>Каталог книг — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  
-  <!-- Подключаем скрипты (ПР №15–17) -->
+  <link rel="stylesheet" href="css/themes.css">
+
+  <script src="js/settings.js" defer></script>
+  <script src="js/i18n.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/catalog.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Перейти к основному содержимому</a>
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">Переплёт</a>
-      
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <a class="site-header__logo" href="index.html" data-i18n="logo">Переплёт</a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню" data-i18n-aria-label="nav.menu.open">
       <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+      <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria-label="nav.menu.label">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
-          <li><a class="site-nav__link" href="product.html">Карточка книги</a></li>
-          <li><a class="site-nav__link" href="order.html">Заявка</a></li>
-          <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li><a class="site-nav__link" href="index.html" data-i18n="nav.home">Главная</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page" data-i18n="nav.catalog">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html" data-i18n="nav.product">Карточка книги</a></li>
+          <li><a class="site-nav__link" href="order.html" data-i18n="nav.order">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a class="site-nav__link" href="settings.html" data-i18n="nav.settings">Настройки</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Каталог</span>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки" data-i18n-aria-label="breadcrumbs.label">
+      <a class="breadcrumbs__link" href="index.html" data-i18n="breadcrumbs.home">Главная</a>
+      <span class="breadcrumbs__current" data-i18n="nav.catalog">Каталог</span>
     </nav>
 
     <section class="section">
@@ -56,7 +59,7 @@
               <label for="catalog-search">Поиск по названию</label>
               <input id="catalog-search" class="filters-form__input" type="search" placeholder="Введите название..." autocomplete="off">
             </div>
-            
+
             <div class="filters-form__label" style="margin-top: 12px;">
               <label for="category-filter">Категория</label>
               <select id="category-filter" class="filters-form__input">
@@ -82,16 +85,15 @@
         <h2>Список книг</h2>
         <p class="catalog-count" aria-live="polite" style="font-weight: bold; color: var(--color-primary); margin-bottom: 16px;"></p>
         <p class="catalog-empty" hidden style="color: var(--color-muted); padding: 20px; border: 1px dashed var(--color-border); border-radius: 8px; text-align: center;">По выбранным условиям книги не найдены.</p>
-        
-        <!-- СЮДА JS ВЫВОДИТ КАРТОЧКИ -->
+
         <div class="products-grid" data-products-container></div>
       </section>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+    <p data-i18n="footer.copy">&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
   </footer>
-  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх" data-i18n-aria-label="toTop">↑</button>
 </body>
 </html>

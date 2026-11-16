@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Настройки интернет-магазина «Переплёт»: тема оформления и язык интерфейса.">
+  <title>Настройки — Переплёт</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/themes.css">
+
+  <script src="js/settings.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" data-i18n="logo">Переплёт</a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню" data-i18n-aria-label="nav.menu.open">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria-label="nav.menu.label">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" data-i18n="nav.home">Главная</a></li>
+          <li><a class="site-nav__link" href="catalog.html" data-i18n="nav.catalog">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html" data-i18n="nav.product">Карточка книги</a></li>
+          <li><a class="site-nav__link" href="order.html" data-i18n="nav.order">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="settings.html" aria-current="page" data-i18n="nav.settings">Настройки</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки" data-i18n-aria-label="breadcrumbs.label">
+      <a class="breadcrumbs__link" href="index.html" data-i18n="breadcrumbs.home">Главная</a>
+      <span class="breadcrumbs__current" data-i18n="nav.settings">Настройки</span>
+    </nav>
+
+    <section class="section">
+      <h1 data-i18n="settings.title">Настройки</h1>
+      <p data-i18n="settings.intro">Настройте внешний вид и язык интерфейса. Изменения сохраняются и применяются на всех страницах магазина.</p>
+
+      <form class="order-form settings-form" id="settings-form" novalidate>
+        <fieldset class="settings-fieldset order-form__field--wide">
+          <legend data-i18n="settings.theme.legend">Тема оформления</legend>
+          <div class="settings-options">
+            <label class="filters-form__label">
+              <input type="radio" name="theme" value="light">
+              <span data-i18n="settings.theme.light">Светлая («Пыльная роза»)</span>
+            </label>
+            <label class="filters-form__label">
+              <input type="radio" name="theme" value="dark">
+              <span data-i18n="settings.theme.dark">Тёмная</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-fieldset order-form__field--wide">
+          <legend data-i18n="settings.lang.legend">Язык интерфейса</legend>
+          <div class="settings-options">
+            <label class="filters-form__label">
+              <input type="radio" name="lang" value="ru">
+              <span>Русский (RU)</span>
+            </label>
+            <label class="filters-form__label">
+              <input type="radio" name="lang" value="en">
+              <span>English (EN)</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="order-form__actions order-form__field--wide">
+          <button class="button button--primary" type="submit" data-i18n="settings.save">Сохранить настройки</button>
+          <button class="button button--secondary" type="button" id="settings-reset" data-i18n="settings.reset">Сбросить по умолчанию</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="settings-message" hidden role="alert"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.copy">&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+  </footer>
+
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх" data-i18n-aria-label="toTop">↑</button>
+</body>
+</html>

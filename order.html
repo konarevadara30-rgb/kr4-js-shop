@@ -7,44 +7,49 @@
   <title>Оформление заявки — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  
-  <!-- Подключаем скрипты (ПР №15–17) -->
+  <link rel="stylesheet" href="css/themes.css">
+
+  <!-- Настройки (тема/язык) и локализация -->
+  <script src="js/settings.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+
+  <!-- Скрипты страницы -->
   <script src="js/validation.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Перейти к основному содержимому</a>
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">Переплёт</a>
-      
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню">
+      <a class="site-header__logo" href="index.html" data-i18n="logo">Переплёт</a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Открыть меню" data-i18n-aria-label="nav.menu.open">
       <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+      <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria-label="nav.menu.label">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-          <li><a class="site-nav__link" href="product.html">Карточка книги</a></li>
-          <li><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Заявка</a></li>
-          <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li><a class="site-nav__link" href="index.html" data-i18n="nav.home">Главная</a></li>
+          <li><a class="site-nav__link" href="catalog.html" data-i18n="nav.catalog">Каталог</a></li>
+          <li><a class="site-nav__link" href="product.html" data-i18n="nav.product">Карточка книги</a></li>
+          <li><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page" data-i18n="nav.order">Заявка</a></li>
+          <li><a class="site-nav__link" href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a class="site-nav__link" href="settings.html" data-i18n="nav.settings">Настройки</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Оформление заявки</span>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки" data-i18n-aria-label="breadcrumbs.label">
+      <a class="breadcrumbs__link" href="index.html" data-i18n="breadcrumbs.home">Главная</a>
+      <span class="breadcrumbs__current" data-i18n="nav.order">Оформление заявки</span>
     </nav>
 
     <section class="section">
       <h1>Оформление заявки</h1>
       <p>Заполните форму ниже, чтобы оставить заявку на книгу или задать вопрос.</p>
 
-      <!-- Добавлен ID order-form и novalidate (отключает встроенную браузерную валидацию) -->
       <form class="order-form" id="order-form" action="#" method="post" novalidate>
         <input id="selected-product" name="selected-product" type="hidden">
 
@@ -87,7 +92,6 @@
         </div>
       </form>
 
-      <!-- Блок для вывода сообщений об успехе или ошибке (по ПР №17) -->
       <p class="success-message" id="success-message" hidden role="alert" style="margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;">
         Заявка успешно отправлена! Мы свяжемся с вами.
       </p>
@@ -95,8 +99,8 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
+    <p data-i18n="footer.copy">&copy; 2026 Книжный магазин «Переплёт». Все права защищены.</p>
   </footer>
-  <button class="to-top" id="to-top" type="button" aria-label="Наверх">↑</button>
+  <button class="to-top" id="to-top" type="button" aria-label="Наверх" data-i18n-aria-label="toTop">↑</button>
 </body>
 </html>
