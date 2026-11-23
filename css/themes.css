@@ -2,7 +2,7 @@
    themes.css — тёмная тема + стили страницы настроек
    =================================== */
 
-/* ---------- ТЁМНАЯ ТЕМА ---------- */
+/* ---------- ПАЛИТРА ТЁМНОЙ ТЕМЫ ---------- */
 html[data-theme="dark"] {
   --color-bg: #1e171b;
   --color-text: #f2e4e9;
@@ -10,39 +10,286 @@ html[data-theme="dark"] {
   --color-primary: #e07a9c;
   --color-primary-dark: #f3a8c1;
   --color-border: #3d2b34;
-  --color-surface: #2a2026;
-  --color-surface-accent: #33262d;
+  --color-surface: #2a2026;          /* панели, фильтры, карточки */
+  --color-surface-accent: #33262d;   /* hover, акцентные блоки */
+  --color-white: #ffffff;            /* оставляем белым для текста на кнопках */
   --color-danger: #ff7a8a;
   --color-success: #6fd09a;
   --color-success-bg: #1d3328;
-  --color-white: #ffffff;
+
+  /* Дополнительные переменные для «отсеков» внутри карточек */
+  --color-inset: #221a1f;            /* темнее, чем карточка */
+  --color-input: #2f242a;            /* фон полей ввода */
 }
 
-/* Плавный переход при смене темы */
-html, body,
-.site-header, .site-footer,
-.product-card, .catalog-filters,
-.order-form__input, .order-form__select, .order-form__textarea,
-.button, .hero, .filters-form fieldset,
-.settings-fieldset {
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+/* Плавный переход при смене темы — расширенный список элементов */
+html,
+body,
+.site-header,
+.site-footer,
+.site-nav__link,
+.hero,
+.hero__image,
+.product-card,
+.product-card__image,
+.catalog-filters,
+.filters-form fieldset,
+.filters-form__input,
+.product-table th,
+.product-table td,
+.product-table thead th,
+.product-table--specs tr,
+.order-form__input,
+.order-form__select,
+.order-form__textarea,
+.order-dialog,
+.button,
+.settings-fieldset,
+.breadcrumbs,
+.to-top {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* ---------- ОБЩИЕ ПРАВИЛА ДЛЯ ТЁМНОЙ ТЕМЫ ---------- */
+
+/* Шапка и футер */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .site-footer {
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 html[data-theme="dark"] .site-header__logo {
-  color: #f3a8c1;
+  color: var(--color-primary-dark);
 }
 
+html[data-theme="dark"] .site-nav__link {
+  color: var(--color-primary);
+}
+html[data-theme="dark"] .site-nav__link:hover {
+  color: var(--color-primary-dark);
+  background-color: var(--color-surface-accent);
+}
+html[data-theme="dark"] .site-nav__link--active {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+/* Кнопки */
+html[data-theme="dark"] .button--primary {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
 html[data-theme="dark"] .button--primary:hover {
+  color: #1e171b;
   background-color: var(--color-primary-dark);
   border-color: var(--color-primary-dark);
-  color: #1e171b;
+}
+html[data-theme="dark"] .button--secondary {
+  color: var(--color-primary);
+  background-color: transparent;
+  border-color: var(--color-primary);
+}
+html[data-theme="dark"] .button--secondary:hover {
+  color: var(--color-primary-dark);
+  background-color: var(--color-surface-accent);
+  border-color: var(--color-primary-dark);
 }
 
-html[data-theme="dark"] .button--secondary:hover {
+/* ---------- СТРАНИЦА «ГЛАВНАЯ» ---------- */
+
+/* Hero-блок */
+html[data-theme="dark"] .hero {
   background-color: var(--color-surface-accent);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* Обёртка/фон картинки в hero */
+html[data-theme="dark"] .hero__image {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+/* Карточки товаров (в т.ч. на главной) */
+html[data-theme="dark"] .product-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* Внутренняя область карточки (картинка) */
+html[data-theme="dark"] .product-card__image {
+  background-color: var(--color-inset);
+}
+
+html[data-theme="dark"] .product-card__title {
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .product-card__description {
+  color: var(--color-muted);
+}
+
+html[data-theme="dark"] .product-card__price {
+  color: var(--color-primary-dark);
+}
+
+html[data-theme="dark"] .product-card__badge {
+  color: #1e171b;
+  background-color: var(--color-primary-dark);
+}
+
+/* ---------- КАТАЛОГ И ОКНО ФИЛЬТРОВ ---------- */
+
+/* Внешняя панель фильтров */
+html[data-theme="dark"] .catalog-filters {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* Внутренние блоки (fieldset) фильтров — темнее панели */
+html[data-theme="dark"] .filters-form fieldset {
+  background-color: var(--color-inset);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .filters-form legend {
+  color: var(--color-primary-dark);
+}
+
+/* Поля ввода в фильтрах */
+html[data-theme="dark"] .filters-form__input {
+  background-color: var(--color-input);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+html[data-theme="dark"] .filters-form__input::placeholder {
+  color: var(--color-muted);
+}
+html[data-theme="dark"] .filters-form__input:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Сообщение «книги не найдены» */
+html[data-theme="dark"] .catalog-empty {
+  color: var(--color-muted);
+  border-color: var(--color-border);
+}
+
+/* ---------- КАРТОЧКА КНИГИ И ТАБЛИЦА ХАРАКТЕРИСТИК ---------- */
+
+/* Блок карточки книги на странице товара */
+html[data-theme="dark"] .product-detail {
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .product-detail__image {
+  background-color: var(--color-inset);
+  border: 1px solid var(--color-border);
+}
+
+html[data-theme="dark"] .product-detail__title {
+  color: var(--color-text);
+}
+html[data-theme="dark"] .product-detail__lead {
+  color: var(--color-muted);
+}
+html[data-theme="dark"] .product-detail__price {
+  color: var(--color-primary-dark);
+}
+
+/* Таблица характеристик (десктоп) */
+html[data-theme="dark"] .product-table {
+  color: var(--color-text);
+}
+html[data-theme="dark"] .product-table th,
+html[data-theme="dark"] .product-table td {
+  border-color: var(--color-border);
+}
+html[data-theme="dark"] .product-table thead th {
+  background-color: var(--color-surface-accent);
+  color: var(--color-text);
+}
+html[data-theme="dark"] .product-table tbody th[scope="row"] {
+  background-color: var(--color-inset);
+  color: var(--color-primary-dark);
+}
+html[data-theme="dark"] .product-table tbody td {
+  background-color: var(--color-surface);
+}
+html[data-theme="dark"] .product-table caption {
+  color: var(--color-text);
+}
+
+/* ---------- ФОРМА ЗАЯВКИ ---------- */
+
+/* Поля формы заявки — тёмные */
+html[data-theme="dark"] .order-form__input,
+html[data-theme="dark"] .order-form__select,
+html[data-theme="dark"] .order-form__textarea {
+  background-color: var(--color-input);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+html[data-theme="dark"] .order-form__input::placeholder,
+html[data-theme="dark"] .order-form__textarea::placeholder {
+  color: var(--color-muted);
+}
+html[data-theme="dark"] .order-form__label {
+  color: var(--color-text);
+}
+
+/* Диалог оформления заявки (на главной) */
+html[data-theme="dark"] .order-dialog {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+html[data-theme="dark"] .order-dialog::backdrop {
+  background-color: rgba(10, 6, 8, 0.7);
+}
+html[data-theme="dark"] .order-dialog__title {
+  color: var(--color-text);
+}
+
+/* Сообщение об успешной отправке */
+html[data-theme="dark"] .success-message {
+  color: var(--color-success);
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- ХЛЕБНЫЕ КРОШКИ И КНОПКА «НАВЕРХ» ---------- */
+
+html[data-theme="dark"] .breadcrumbs {
+  color: var(--color-muted);
+}
+html[data-theme="dark"] .breadcrumbs__link {
+  color: var(--color-primary);
+}
+html[data-theme="dark"] .breadcrumbs__link:hover {
+  color: var(--color-primary-dark);
+}
+
+html[data-theme="dark"] .to-top {
+  background-color: var(--color-primary);
+  color: #1e171b;
+}
+html[data-theme="dark"] .to-top:hover {
+  background-color: var(--color-primary-dark);
 }
 
 /* ---------- СТИЛИ СТРАНИЦЫ НАСТРОЕК ---------- */
+
 .settings-form {
   max-width: 640px;
   margin-inline: auto;
@@ -58,6 +305,8 @@ html[data-theme="dark"] .button--secondary:hover {
 
 html[data-theme="dark"] .settings-fieldset {
   background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
 }
 
 .settings-fieldset legend {
@@ -74,4 +323,23 @@ html[data-theme="dark"] .settings-fieldset {
 
 .settings-options .filters-form__label {
   margin-bottom: 0;
+}
+
+/* ---------- МОБИЛЬНЫЙ КАРТОЧНЫЙ ВИД ТАБЛИЦЫ ХАРАКТЕРИСТИК ---------- */
+/* Отсеки характеристик на мобильных — тёмные, как и на десктопе. */
+@media (max-width: 767px) {
+  html[data-theme="dark"] .product-table--specs tr {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  html[data-theme="dark"] .product-table--specs td {
+    background-color: var(--color-inset);
+    color: var(--color-text);
+    border-bottom-color: var(--color-border);
+  }
+
+  html[data-theme="dark"] .product-table--specs td::before {
+    color: var(--color-primary-dark);
+  }
 }

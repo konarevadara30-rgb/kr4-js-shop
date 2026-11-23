@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Оформление заявки на книгу в интернет-магазине «Переплёт».">
-  <title>Оформление заявки — Переплёт</title>
+  <meta name="description" content="Оформление заявки на книгу в интернет-магазине «Переплёт»." data-i18n="meta.order.description">
+  <title data-i18n="meta.order.title">Оформление заявки — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/themes.css">
-
-  <!-- Настройки (тема/язык) и локализация -->
   <script src="js/settings.js" defer></script>
   <script src="js/i18n.js" defer></script>
-
-  <!-- Скрипты страницы -->
   <script src="js/validation.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
@@ -43,56 +39,56 @@
   <main id="main">
     <nav class="breadcrumbs" aria-label="Хлебные крошки" data-i18n-aria-label="breadcrumbs.label">
       <a class="breadcrumbs__link" href="index.html" data-i18n="breadcrumbs.home">Главная</a>
-      <span class="breadcrumbs__current" data-i18n="nav.order">Оформление заявки</span>
+      <span class="breadcrumbs__current" data-i18n="order.title">Оформление заявки</span>
     </nav>
 
     <section class="section">
-      <h1>Оформление заявки</h1>
-      <p>Заполните форму ниже, чтобы оставить заявку на книгу или задать вопрос.</p>
+      <h1 data-i18n="order.title">Оформление заявки</h1>
+      <p data-i18n="order.intro">Заполните форму ниже, чтобы оставить заявку на книгу или задать вопрос.</p>
 
       <form class="order-form" id="order-form" action="#" method="post" novalidate>
         <input id="selected-product" name="selected-product" type="hidden">
 
         <div class="order-form__field">
-          <label class="order-form__label" for="order-name">Имя <span aria-hidden="true">*</span></label>
-          <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+          <label class="order-form__label" for="order-name"><span data-i18n="order.name">Имя</span> <span aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required data-i18n-placeholder="order.namePlaceholder">
         </div>
 
         <div class="order-form__field">
-          <label class="order-form__label" for="order-email">E-mail <span aria-hidden="true">*</span></label>
+          <label class="order-form__label" for="order-email"><span data-i18n="order.email">E-mail</span> <span aria-hidden="true">*</span></label>
           <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
         </div>
 
         <div class="order-form__field">
-          <label class="order-form__label" for="order-phone">Телефон <span aria-hidden="true">*</span></label>
-          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" required>
+          <label class="order-form__label" for="order-phone"><span data-i18n="order.phone">Телефон</span> <span aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" required data-i18n-placeholder="order.phonePlaceholder">
         </div>
 
         <div class="order-form__field">
-          <label class="order-form__label" for="order-topic">Тема заявки</label>
+          <label class="order-form__label" for="order-topic" data-i18n="order.topic">Тема заявки</label>
           <select class="order-form__select" id="order-topic" name="topic" required>
-            <option value="">Выберите тему</option>
-            <option value="book">Заказ книги</option>
-            <option value="consultation">Консультация по выбору</option>
+            <option value="" data-i18n="order.topicPlaceholder">Выберите тему</option>
+            <option value="book" data-i18n="order.topicBook">Заказ книги</option>
+            <option value="consultation" data-i18n="order.topicConsult">Консультация по выбору</option>
           </select>
         </div>
 
         <div class="order-form__field order-form__field--wide">
-          <label class="order-form__label" for="order-comment">Комментарий</label>
-          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите книгу и дополнительную информацию"></textarea>
+          <label class="order-form__label" for="order-comment" data-i18n="order.comment">Комментарий</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите книгу и дополнительную информацию" data-i18n-placeholder="order.commentPlaceholder"></textarea>
         </div>
 
         <div class="order-form__field order-form__field--wide" style="grid-template-columns: auto 1fr; align-items: center;">
           <input class="order-form__input order-form__input--checkbox" id="order-agreement" name="agreement" type="checkbox" required>
-          <label class="order-form__label" for="order-agreement" style="margin-bottom: 0;">Я согласен на обработку данных</label>
+          <label class="order-form__label" for="order-agreement" style="margin-bottom: 0;" data-i18n="order.agreement">Я согласен на обработку данных</label>
         </div>
 
         <div class="order-form__actions order-form__field--wide">
-          <button class="button button--primary" type="submit">Отправить заявку</button>
+          <button class="button button--primary" type="submit" data-i18n="order.submit">Отправить заявку</button>
         </div>
       </form>
 
-      <p class="success-message" id="success-message" hidden role="alert" style="margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;">
+      <p class="success-message" id="success-message" hidden role="alert" data-i18n="order.success" style="margin-top: 20px; padding: 12px; border-radius: 8px; text-align: center;">
         Заявка успешно отправлена! Мы свяжемся с вами.
       </p>
     </section>

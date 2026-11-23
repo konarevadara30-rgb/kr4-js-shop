@@ -1,11 +1,37 @@
 // js/catalog.js
+'use strict';
 
-// ==========================================
-// ПР №16: ФУНКЦИИ ОБРАБОТКИ ДАННЫХ (Алгоритмы)
-// ==========================================
+/* ============================================================
+   Хелперы i18n
+   ============================================================ */
+function getCurrentLang() {
+  return window.PereplyotSettings
+    ? window.PereplyotSettings.get().lang
+    : 'ru';
+}
+
+function tr(key) {
+  if (!key) return '';
+  return window.PereplyotI18n
+    ? window.PereplyotI18n.t(key, getCurrentLang())
+    : key;
+}
+
+/* Перевод названия/описания книги по её i18n-ключу */
+function trProduct(product, field) {
+  const key = product.i18n && product.i18n[field];
+  return tr(key);
+}
+
+/* ==========================================
+   ПР №16: ФУНКЦИИ ОБРАБОТКИ ДАННЫХ (Алгоритмы)
+   ========================================== */
 
 function formatPrice(price) {
-  return `${price.toLocaleString('ru-RU')} руб.`;
+  const lang = getCurrentLang();
+  const locale = lang === 'en' ? 'en-US' : 'ru-RU';
+  const suffix = lang === 'en' ? 'RUB' : 'руб.';
+  return `${price.toLocaleString(locale)} ${suffix}`;
 }
 
 function calculateDiscount(price, discountPercent) {
@@ -18,19 +44,21 @@ function calculateFinalPrice(price, discountPercent) {
 }
 
 function getProductTitles(products) {
-  return products.map(product => product.title);
+  return products.map(product => trProduct(product, 'title'));
 }
 
 function getAvailableProducts(products) {
   return products.filter(product => product.isAvailable);
 }
 
+// query.trim() — убирает пробельные символы
+// .toLowerCase() — приводит строку к нижнему регистру
 function searchProducts(products, query) {
   const normalizedQuery = query.trim().toLowerCase();
   if (normalizedQuery === '') return products;
-  
-  return products.filter(product => 
-    product.title.toLowerCase().includes(normalizedQuery)
+
+  return products.filter(product =>
+    trProduct(product, 'title').toLowerCase().includes(normalizedQuery)
   );
 }
 
@@ -73,10 +101,9 @@ function getPreparedProducts(products, state) {
   return result;
 }
 
-// ==========================================
-// ПР №17: РАБОТА С DOM И СОБЫТИЯМИ (Интерфейс каталога)
-// ==========================================
-
+/* ============================================================
+   DOM-элементы и состояние каталога
+   ============================================================ */
 const productsContainer = document.querySelector('[data-products-container]');
 const searchInput = document.querySelector('#catalog-search');
 const categoryFilter = document.querySelector('#category-filter');
@@ -84,56 +111,79 @@ const sortSelect = document.querySelector('#sort-select');
 const catalogCount = document.querySelector('.catalog-count');
 const catalogEmpty = document.querySelector('.catalog-empty');
 
-// Состояние каталога
 const catalogState = {
   query: '',
   category: 'all',
-  sort: 'asc' // по умолчанию сортируем по возрастанию цены
+  sort: 'asc'
 };
 
-// Создание HTML-карточки
+/* ============================================================
+   Создание HTML-карточки (с data-i18n и переведённым контентом)
+   ============================================================ */
 function createProductCard(product) {
+  const lang = getCurrentLang();
   const card = document.createElement('article');
   card.classList.add('product-card');
+  if (product.badgeClass) card.classList.add(product.badgeClass);
 
-  // Бейджи
-  if (product.discountPercent > 0) {
+  /* ---------- Бейджи ---------- */
+  // Бейдж из product.i18n.badge (Хит / Скидка / Новинка)
+  if (product.i18n && product.i18n.badge) {
     const badge = document.createElement('span');
     badge.classList.add('product-card__badge');
-    badge.textContent = 'Скидка';
+    badge.setAttribute('data-i18n', product.i18n.badge);
+    badge.textContent = tr(product.i18n.badge);
+    card.appendChild(badge);
+  } else if (product.discountPercent > 0) {
+    const badge = document.createElement('span');
+    badge.classList.add('product-card__badge');
+    badge.setAttribute('data-i18n', 'badge.discount');
+    badge.textContent = tr('badge.discount');
     card.appendChild(badge);
   } else if (!product.isAvailable) {
     const badge = document.createElement('span');
     badge.classList.add('product-card__badge');
-    badge.textContent = 'Нет в наличии';
+    badge.setAttribute('data-i18n', 'badge.outOfStock');
+    badge.textContent = tr('badge.outOfStock');
     badge.style.backgroundColor = 'var(--color-muted)';
     card.appendChild(badge);
   }
 
+  /* ---------- Картинка ---------- */
   const image = document.createElement('img');
   image.classList.add('product-card__image');
   image.src = product.image;
-  image.alt = product.title;
   image.loading = 'lazy';
   image.width = 400;
   image.height = 300;
+  if (product.i18n && product.i18n.alt) {
+    image.setAttribute('data-i18n-alt', product.i18n.alt);
+    image.alt = tr(product.i18n.alt);
+  } else {
+    image.alt = trProduct(product, 'title');
+  }
 
+  /* ---------- Заголовок ---------- */
   const title = document.createElement('h3');
   title.classList.add('product-card__title');
-  title.textContent = product.title;
+  title.setAttribute('data-i18n', product.i18n.title);
+  title.textContent = trProduct(product, 'title');
 
+  /* ---------- Описание ---------- */
   const description = document.createElement('p');
   description.classList.add('product-card__description');
-  description.textContent = product.description;
+  description.setAttribute('data-i18n', product.i18n.description);
+  description.textContent = trProduct(product, 'description');
 
+  /* ---------- Цена ---------- */
   const price = document.createElement('p');
   price.classList.add('product-card__price');
-  
-  // Логика вывода цены со скидкой
+
   if (product.discountPercent > 0) {
     const finalPrice = calculateFinalPrice(product.price, product.discountPercent);
-    price.textContent = `Цена: ${formatPrice(finalPrice)}`;
-    // Можно добавить зачеркнутую старую цену
+    const label = lang === 'en' ? 'Price: ' : 'Цена: ';
+    price.textContent = `${label}${formatPrice(finalPrice)}`;
+
     const oldPrice = document.createElement('span');
     oldPrice.style.textDecoration = 'line-through';
     oldPrice.style.color = 'var(--color-muted)';
@@ -142,17 +192,25 @@ function createProductCard(product) {
     oldPrice.textContent = formatPrice(product.price);
     price.appendChild(oldPrice);
   } else {
-    price.textContent = `Цена: ${formatPrice(product.price)}`;
+    const label = lang === 'en' ? 'Price: ' : 'Цена: ';
+    price.textContent = `${label}${formatPrice(product.price)}`;
   }
 
+  /* ---------- Кнопка ---------- */
   const button = document.createElement('button');
   button.classList.add('button', 'button--primary', 'product-card__button');
   button.type = 'button';
-  button.textContent = product.isAvailable ? 'Заказать' : 'Недоступно';
   button.dataset.action = 'add-to-cart';
   button.dataset.productId = String(product.id);
 
-  if (!product.isAvailable) {
+  if (product.isAvailable) {
+    button.setAttribute('data-i18n', 'book.order');
+    button.textContent = tr('book.order');
+    // data-product — переведённое название книги (для формы заявки)
+    button.dataset.product = trProduct(product, 'title');
+  } else {
+    button.setAttribute('data-i18n', 'button.unavailable');
+    button.textContent = tr('button.unavailable');
     button.disabled = true;
     button.style.opacity = '0.5';
     button.style.cursor = 'not-allowed';
@@ -162,13 +220,18 @@ function createProductCard(product) {
   return card;
 }
 
-// Рендер каталога
+/* ============================================================
+   Рендер каталога
+   ============================================================ */
 function renderProducts(productsToRender) {
   if (!productsContainer) return;
-  productsContainer.textContent = ''; // Очистка
+  productsContainer.textContent = '';
 
   if (catalogCount) {
-    catalogCount.textContent = `Найдено книг: ${productsToRender.length}`;
+    const lang = getCurrentLang();
+    catalogCount.textContent = lang === 'en'
+      ? `Found: ${productsToRender.length}`
+      : `Найдено книг: ${productsToRender.length}`;
   }
   if (catalogEmpty) {
     catalogEmpty.hidden = productsToRender.length > 0;
@@ -180,13 +243,23 @@ function renderProducts(productsToRender) {
   });
 }
 
-// Обновление каталога
+/* ============================================================
+   Обновление каталога
+   ============================================================ */
 function updateCatalog() {
-  const prepared = getPreparedProducts(products, catalogState);
+  const data = window.PereplyotData ? window.PereplyotData.products : [];
+  const prepared = getPreparedProducts(data, catalogState);
   renderProducts(prepared);
+
+  // Переводим все data-i18n-элементы каталога на текущий язык
+  if (window.PereplyotI18n && typeof window.PereplyotI18n.translatePage === 'function') {
+    window.PereplyotI18n.translatePage(getCurrentLang());
+  }
 }
 
-// Инициализация обработчиков событий
+/* ============================================================
+   Инициализация
+   ============================================================ */
 if (productsContainer) {
   // Первичный рендер
   updateCatalog();
@@ -212,17 +285,27 @@ if (productsContainer) {
     });
   }
 
-  // Делегирование событий для кнопок (ПР №17)
+  /* Перерисовка при смене языка (событие от settings.js) */
+  document.addEventListener('settings:changed', () => {
+    updateCatalog();
+  });
+
+  /* Делегирование событий для кнопок (ПР №17) */
   productsContainer.addEventListener('click', (event) => {
     const button = event.target.closest('[data-action="add-to-cart"]');
     if (!button || button.disabled) return;
 
     const productId = Number(button.dataset.productId);
-    const selectedProduct = findProductById(products, productId);
+    const data = window.PereplyotData ? window.PereplyotData.products : [];
+    const selectedProduct = findProductById(data, productId);
 
     if (selectedProduct) {
-      console.log('Добавлено в корзину:', selectedProduct.title);
-      alert(`Книга "${selectedProduct.title}" добавлена в корзину!`); // В ПР №17 можно использовать alert для демо, но лучше модалку
+      const title = trProduct(selectedProduct, 'title');
+      console.log('Добавлено в корзину:', title);
+      const msg = getCurrentLang() === 'en'
+        ? `Book "${title}" added to cart!`
+        : `Книга "${title}" добавлена в корзину!`;
+      alert(msg);
     }
   });
 }

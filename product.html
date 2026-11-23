@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Карточка книги «Мы» Евгения Замятина — характеристики, цена, оформление заявки.">
-  <title>Замятин, Мы — Переплёт</title>
+  <meta name="description" content="Карточка книги «Мы» Евгения Замятина — характеристики, цена, оформление заявки." data-i18n="meta.product.description">
+  <title data-i18n="meta.product.title">Замятин, Мы — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/themes.css">
@@ -39,7 +39,7 @@
     <nav class="breadcrumbs" aria-label="Хлебные крошки" data-i18n-aria-label="breadcrumbs.label">
       <a class="breadcrumbs__link" href="index.html" data-i18n="breadcrumbs.home">Главная</a>
       <a class="breadcrumbs__link" href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-      <span class="breadcrumbs__current">Замятин, Мы</span>
+      <span class="breadcrumbs__current" data-i18n="product.breadcrumb">Замятин, Мы</span>
     </nav>
 
     <section class="section">
@@ -48,54 +48,58 @@
           <img class="product-detail__image"
                src="images/im_1.jpg"
                alt="Обложка книги «Мы» Евгения Замятина"
-               width="400" height="300">
+               width="400" height="300"
+               data-i18n-alt="product.alt">
         </div>
 
         <div class="product-detail__info">
-          <h1 class="product-detail__title">Замятин, Мы</h1>
-          <p class="product-detail__lead">
+          <h1 class="product-detail__title" data-i18n="product.title">Замятин, Мы</h1>
+          <p class="product-detail__lead" data-i18n="product.lead">
             «Мы» — роман-антиутопия Евгения Замятина, написанный в 1920 году.
             Действие происходит в Едином Государстве будущего.
           </p>
-          <p class="product-detail__price">Цена: 1000 руб.</p>
+          <p class="product-detail__price" data-i18n="product.price">Цена: 1000 руб.</p>
 
           <div class="product-actions">
-            <a class="button button--primary" href="order.html?product=%D0%97%D0%B0%D0%BC%D1%8F%D1%82%D0%B8%D0%BD%2C%20%D0%9C%D1%8B">Оформить заявку</a>
-            <a class="button button--secondary" href="catalog.html">Вернуться в каталог</a>
+            <a class="button button--primary" href="order.html?product=%D0%97%D0%B0%D0%BC%D1%8F%D1%82%D0%B8%D0%BD%2C%20%D0%9C%D1%8B" data-i18n="product.order">Оформить заявку</a>
+            <a class="button button--secondary" href="catalog.html" data-i18n="product.back">Вернуться в каталог</a>
           </div>
         </div>
       </article>
 
       <div class="table-wrapper product-detail__specs">
         <table class="product-table product-table--specs">
-          <caption>Характеристики книги</caption>
+          <caption data-i18n="product.specs.caption">Характеристики книги</caption>
           <thead>
-            <tr><th scope="col">Параметр</th><th scope="col">Значение</th></tr>
+            <tr>
+              <th scope="col" data-i18n="product.specs.param">Параметр</th>
+              <th scope="col" data-i18n="product.specs.value">Значение</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Автор</th>
-              <td data-label="Автор">Евгений Замятин</td>
+              <th scope="row" data-i18n="product.specs.author">Автор</th>
+              <td data-label="Автор" data-i18n="product.specs.authorValue" data-i18n-label="product.specs.author">Евгений Замятин</td>
             </tr>
             <tr>
-              <th scope="row">Категория</th>
-              <td data-label="Категория">Роман-антиутопия</td>
+              <th scope="row" data-i18n="product.specs.category">Категория</th>
+              <td data-label="Категория" data-i18n="product.specs.categoryValue" data-i18n-label="product.specs.category">Роман-антиутопия</td>
             </tr>
             <tr>
-              <th scope="row">Издательство</th>
-              <td data-label="Издательство">Переплёт-Классика</td>
+              <th scope="row" data-i18n="product.specs.publisher">Издательство</th>
+              <td data-label="Издательство" data-i18n="product.specs.publisherValue" data-i18n-label="product.specs.publisher">Переплёт-Классика</td>
             </tr>
             <tr>
-              <th scope="row">Год издания</th>
-              <td data-label="Год издания">2024</td>
+              <th scope="row" data-i18n="product.specs.year">Год издания</th>
+              <td data-label="Год издания" data-i18n="product.specs.yearValue" data-i18n-label="product.specs.year">2024</td>
             </tr>
             <tr>
-              <th scope="row">Переплёт</th>
-              <td data-label="Переплёт">Твёрдый</td>
+              <th scope="row" data-i18n="product.specs.binding">Переплёт</th>
+              <td data-label="Переплёт" data-i18n="product.specs.bindingValue" data-i18n-label="product.specs.binding">Твёрдый</td>
             </tr>
             <tr>
-              <th scope="row">Страниц</th>
-              <td data-label="Страниц">320</td>
+              <th scope="row" data-i18n="product.specs.pages">Страниц</th>
+              <td data-label="Страниц" data-i18n="product.specs.pagesValue" data-i18n-label="product.specs.pages">320</td>
             </tr>
           </tbody>
         </table>

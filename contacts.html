@@ -3,24 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контакты интернет-магазина «Переплёт».">
-  <title>Контакты — Переплёт</title>
-
+  <meta name="description" content="Контакты интернет-магазина «Переплёт»." data-i18n="meta.contacts.description">
+  <title data-i18n="meta.contacts.title">Контакты — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/themes.css">
-
-  <!-- Применяем сохранённые тему и язык до отрисовки (против вспышки) -->
-  <script>
-    (function () {
-      try {
-        var s = JSON.parse(localStorage.getItem('pereplyot-settings') || '{}');
-        if (s.theme) document.documentElement.setAttribute('data-theme', s.theme);
-        if (s.lang)  document.documentElement.setAttribute('lang', s.lang);
-      } catch (e) {}
-    })();
-  </script>
-
   <script src="js/settings.js" defer></script>
   <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -42,7 +29,6 @@
           <li><a class="site-nav__link" href="product.html" data-i18n="nav.product">Карточка книги</a></li>
           <li><a class="site-nav__link" href="order.html" data-i18n="nav.order">Заявка</a></li>
           <li><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page" data-i18n="nav.contacts">Контакты</a></li>
-          <!-- ✅ Новый пункт: переход на страницу настроек -->
           <li><a class="site-nav__link" href="settings.html" data-i18n="nav.settings">Настройки</a></li>
         </ul>
       </nav>

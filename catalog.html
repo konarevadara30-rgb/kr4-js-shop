@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог книг интернет-магазина «Переплёт».">
-  <title>Каталог книг — Переплёт</title>
+  <meta name="description" content="Каталог книг интернет-магазина «Переплёт»." data-i18n="meta.catalog.description">
+  <title data-i18n="meta.catalog.title">Каталог книг — Переплёт</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/themes.css">
-
   <script src="js/settings.js" defer></script>
   <script src="js/i18n.js" defer></script>
   <script src="js/data.js" defer></script>
@@ -45,36 +44,36 @@
     </nav>
 
     <section class="section">
-      <h1>Каталог книг</h1>
-      <p>Классика, антиутопия и проза — выберите книгу по душе.</p>
+      <h1 data-i18n="catalog.title">Каталог книг</h1>
+      <p data-i18n="catalog.intro">Классика, антиутопия и проза — выберите книгу по душе.</p>
     </section>
 
     <section class="catalog-layout">
       <aside class="catalog-filters">
-        <h2>Фильтры</h2>
+        <h2 data-i18n="catalog.filters.title">Фильтры</h2>
         <div class="filters-form">
           <fieldset>
-            <legend>Поиск и категории</legend>
+            <legend data-i18n="catalog.filters.legend">Поиск и категории</legend>
             <div class="filters-form__label">
-              <label for="catalog-search">Поиск по названию</label>
-              <input id="catalog-search" class="filters-form__input" type="search" placeholder="Введите название..." autocomplete="off">
+              <label for="catalog-search" data-i18n="catalog.filters.searchLabel">Поиск по названию</label>
+              <input id="catalog-search" class="filters-form__input" type="search" placeholder="Введите название..." autocomplete="off" data-i18n-placeholder="catalog.filters.searchPlaceholder">
             </div>
 
             <div class="filters-form__label" style="margin-top: 12px;">
-              <label for="category-filter">Категория</label>
+              <label for="category-filter" data-i18n="catalog.filters.categoryLabel">Категория</label>
               <select id="category-filter" class="filters-form__input">
-                <option value="all">Все книги</option>
-                <option value="classic">Классика</option>
-                <option value="prose">Проза</option>
-                <option value="foreign">Зарубежная</option>
+                <option value="all" data-i18n="catalog.filters.categoryAll">Все книги</option>
+                <option value="classic" data-i18n="catalog.filters.categoryClassic">Классика</option>
+                <option value="prose" data-i18n="catalog.filters.categoryProse">Проза</option>
+                <option value="foreign" data-i18n="catalog.filters.categoryForeign">Зарубежная</option>
               </select>
             </div>
 
             <div class="filters-form__label" style="margin-top: 12px;">
-              <label for="sort-select">Сортировка</label>
+              <label for="sort-select" data-i18n="catalog.filters.sortLabel">Сортировка</label>
               <select id="sort-select" class="filters-form__input">
-                <option value="asc">Сначала дешевле</option>
-                <option value="desc">Сначала дороже</option>
+                <option value="asc" data-i18n="catalog.filters.sortAsc">Сначала дешевле</option>
+                <option value="desc" data-i18n="catalog.filters.sortDesc">Сначала дороже</option>
               </select>
             </div>
           </fieldset>
@@ -82,9 +81,9 @@
       </aside>
 
       <section class="catalog-products">
-        <h2>Список книг</h2>
+        <h2 data-i18n="catalog.products.title">Список книг</h2>
         <p class="catalog-count" aria-live="polite" style="font-weight: bold; color: var(--color-primary); margin-bottom: 16px;"></p>
-        <p class="catalog-empty" hidden style="color: var(--color-muted); padding: 20px; border: 1px dashed var(--color-border); border-radius: 8px; text-align: center;">По выбранным условиям книги не найдены.</p>
+        <p class="catalog-empty" hidden data-i18n="catalog.empty" style="color: var(--color-muted); padding: 20px; border: 1px dashed var(--color-border); border-radius: 8px; text-align: center;">По выбранным условиям книги не найдены.</p>
 
         <div class="products-grid" data-products-container></div>
       </section>
